@@ -4,12 +4,17 @@ from .models import Project, Task
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Home page")
+    return render(request, 'index.html')
 
 def projects(request):
-    projects = list(Project.objects.values())
-    return JsonResponse(projects, safe=False)
+    # projects = list(Project.objects.values())
+    projects = Project.objects.all()
+    return render(request, 'projects.html', {
+        'projects': projects
+    })
 
 def tasks(request, id):
     task = get_object_or_404(Task, pk=id)
-    return HttpResponse("Task: %s" % task.title)
+    return render(request, 'tasks.html', {
+        'task': task
+    })
