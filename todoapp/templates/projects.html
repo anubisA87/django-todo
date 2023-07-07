@@ -7,6 +7,12 @@
 </head>
 <body>
   <h1>Projects</h1>
-  <p>{{ projects }}</p>
+  {% for project in projects %}
+    <div>
+      <a href="/tasks/{{project.id}}">{{ project }}</a>
+      <button>Delete</button>
+      <button>Update</button>
+    </div>
+  {% endfor %}
 </body>
 </html>

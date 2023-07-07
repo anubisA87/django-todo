@@ -14,7 +14,10 @@ def projects(request):
     })
 
 def tasks(request, id):
-    task = get_object_or_404(Task, pk=id)
+    tasks = Task.objects.all()
+    project_tasks = tasks.filter(project_id=id)
+    project_name = Project.objects.get(id=id)
     return render(request, 'tasks.html', {
-        'task': task
+        'project_tasks': project_tasks,
+        'project_name': project_name
     })
