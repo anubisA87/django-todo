@@ -7,13 +7,14 @@
 </head>
 <body>
   <h1>Tasks</h1>
-  <h3><a href="/projects">Project: {{ project_name }}</a></h3>
+  <h3><a href="/projects">Project: {{ project.name }}</a></h3>
   <ul>
     {% for task in project_tasks %}
-        <li>{{ task.title }}</li>
+        <li><a href="/task/{{task.id}}">{{ task.title }}</a></li>
         <button>Delete</button>
         <input type="checkbox">
     {% endfor %}
   </ul>
+  <button><a href="/create_task/{{ project.id }}">Create new task</a></button>
 </body>
 </html>
