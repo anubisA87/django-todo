@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import Project, Task
-from .forms import CreateTask
+from .forms import CreateTask, CreateProject
 
 # Create your views here.
 def home(request):
@@ -31,7 +31,21 @@ def task(request, id):
 
 def create_task(request, project_id):
     project = Project.objects.get(id=project_id)
-    return render(request, 'create_task.html', {
-        'form': CreateTask(),
-        'project': project,
+    if request.method == 'GET':
+        return render(request, 'create_task.html', {
+            'form': CreateTask(),
+            'project': project,
     })
+    else:
+        Task.objects.create(title=request.POST['title'], description=request.POST['description'], project_id=project_id)
+        return redirect('/tasks/' + str(project_id))
+    
+def create_project(request):
+    if request.method == 'GET':
+        return render(request, 'create_project.html', {
+            'form': CreateProject(),
+        })
+    else:
+        Project.objects.create(name=request.POST['name'])
+        return redirect('projects')
+

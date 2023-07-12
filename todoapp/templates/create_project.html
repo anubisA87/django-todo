@@ -6,15 +6,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create task</title>
+  <title>Create project</title>
 </head>
 <body>
-  <h1>Create task for: <a href="/tasks/{{ project.id }}">{{ project.name }}</a></h1>
-  <form method="POST" class="pure-form pure-form-stacked">
+  <h1>Create project</h1>
+  <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
   <button type="submit">Submit</button>
-</form>
 </body>
 </html>
 {% endblock %}

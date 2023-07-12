@@ -1,3 +1,6 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +9,17 @@
   <title>Task</title>
 </head>
 <body>
-  <h1>{{ task.title }}</h1>
-  <p>{{ task.description }}</p>
-  <button>Delete</button>
-  <input type="checkbox">
+  <div class="task_container">
+    <span>
+      <h1>{{ task.title }}</h1>
+      <p>{{ task.description }}</p>
+    </span>
+    <div class="task">
+      <button>Delete</button>
+      <input type="checkbox">
+    </div>
+  </div>
+  <button class="back"><a href="/tasks/{{ task.project_id }}"><- Back</a></button>
 </body>
 </html>
+{% endblock %}

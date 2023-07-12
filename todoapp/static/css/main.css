@@ -1,0 +1,68 @@
+body {
+  margin: 40 !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: darkviolet;
+}
+
+li {
+  margin: 8;
+}
+
+.create_project {
+  margin-top: 17;
+  padding: 5;
+}
+
+.back {
+  margin-top: 14;
+  padding: 5;
+}
+
+.task {
+  margin-top: 40;
+}
+
+span {
+  margin: 10;
+}
+
+.project {
+  margin: 20;
+  background-color: lightgray;
+}
+
+.create_task {
+  margin-top: 17;
+  padding: 5;
+}
+
+.task_list {
+  background-color: lightgray;
+  padding: 20;
+  padding-left: 40;
+}
+
+.project_div {
+  background-color: lightgrey;
+  padding: 1;
+}
+
+.task_container {
+  background-color: lightgrey;
+  background-color: lightgrey;
+  padding: 15;
+  padding-bottom: 30;
+  padding-top: 2;
+  margin-top: 14;
+}
+
+form {
+  background-color: lightgrey;
+  margin: 10;
+  padding: 25;
+  padding-top: 13;
+  margin-top: 25;
+}
