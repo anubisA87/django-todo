@@ -15,8 +15,11 @@
       <p>{{ task.description }}</p>
     </span>
     <div class="task">
-      <button>Delete</button>
-      <input type="checkbox">
+      {% if task.completed == False %}
+        <input class="checkbox" type="checkbox">
+      {% else %}
+        <input class="checkbox" type="checkbox" checked>
+      {% endif %}
     </div>
   </div>
   <button class="back"><a href="/tasks/{{ task.project_id }}"><- Back</a></button>

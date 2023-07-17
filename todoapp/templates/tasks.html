@@ -13,9 +13,14 @@
   <h3><a href="/projects">Project: {{ project.name }}</a></h3>
   <ul class="task_list">
     {% for task in project_tasks %}
-        <li><a href="/task/{{task.id}}">{{ task.title }}</a></li>
-        <button>Delete</button>
-        <input type="checkbox">
+        <li>
+          <a href="/task/{{task.id}}">{{ task.title }}</a>
+          {% if task.completed == False %}
+            <input class="checkbox" type="checkbox">
+          {% else %}
+            <input class="checkbox" type="checkbox" checked>
+          {% endif %}
+        </li>
     {% endfor %}
   </ul>
   <button class="create_task"><a href="/create_task/{{ project.id }}">Create task</a></button>

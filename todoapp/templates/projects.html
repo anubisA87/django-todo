@@ -14,8 +14,8 @@
     {% for project in projects %}
       <div class="project">
         <a href="/tasks/{{project.id}}">{{ project }}</a>
-        <button>Delete</button>
-        <button>Update</button>
+        <button class="delete-bttn"><a class="delete-a" href="/delete_project/{{project.id}}">Delete</a></button>
+        <button><a class="delete-a" href="/update_project/{{project.id}}">Update</a></button>
       </div>
     {% endfor %}
   </div>

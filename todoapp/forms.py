@@ -6,3 +6,6 @@ class CreateTask(forms.Form):
 
 class CreateProject(forms.Form):
     name = forms.CharField(label='Title', max_length=100)
+
+class UpdateProject(forms.Form):
+    name = forms.CharField(label='Name', max_length=100)

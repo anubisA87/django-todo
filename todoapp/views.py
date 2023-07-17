@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import Project, Task
-from .forms import CreateTask, CreateProject
+from .forms import CreateTask, CreateProject, UpdateProject
 
 # Create your views here.
 def home(request):
@@ -48,4 +48,20 @@ def create_project(request):
     else:
         Project.objects.create(name=request.POST['name'])
         return redirect('projects')
+    
+def delete_project(request, id):
+    project = Project.objects.get(id=id)
+    project.delete()
+    return redirect('projects')
 
+def update_project(request, id):
+    if request.method == 'GET':
+        project = Project.objects.get(id=id)
+        return render(request, 'update_project.html', {
+            'form': UpdateProject(),
+            'project': project,
+        })
+    else:
+        project = Project.objects.filter(id=id)
+        project.update(name=request.POST['name'])
+        return redirect('projects')

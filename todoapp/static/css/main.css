@@ -66,3 +66,16 @@ form {
   padding-top: 13;
   margin-top: 25;
 }
+
+.checkbox {
+  margin: 10;
+  margin-left: 25;
+}
+
+.delete-a {
+  color: black;
+}
+
+.delete-bttn {
+  margin-left: 25;
+}
