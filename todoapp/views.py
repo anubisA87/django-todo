@@ -65,3 +65,10 @@ def update_project(request, id):
         project = Project.objects.filter(id=id)
         project.update(name=request.POST['name'])
         return redirect('projects')
+
+def completed(request, id):
+    task = Task.objects.filter(id=id)
+    task.update(completed=True)
+    task_object = Task.objects.get(id=id)
+    fk = task_object.project
+    return redirect('/tasks/' + str(fk.id))

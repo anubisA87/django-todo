@@ -16,9 +16,10 @@
         <li>
           <a href="/task/{{task.id}}">{{ task.title }}</a>
           {% if task.completed == False %}
-            <input class="checkbox" type="checkbox">
+            <input class="checkbox" type="checkbox" disabled>
+            <button><a class='delete-a' href="/completed/{{ task.id }}">Complete</a></button>
           {% else %}
-            <input class="checkbox" type="checkbox" checked>
+            <input class="checkbox" type="checkbox" checked disabled>
           {% endif %}
         </li>
     {% endfor %}
