@@ -1,0 +1,24 @@
+{% extends 'layout/bootstrap.html' %}
+{% load crispy_forms_tags %} 
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+</head>
+<body>
+  <h1 style="font-weight: bold; color: black;">Login</h1>
+  <form method="POST" style="margin: 22; margin-top: 35;">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div style="margin-top: 30;">
+      <button class="btn btn-success" type="submit">Register</button>
+      <a href="/login" style="margin: 30;">Login</a>
+    </div>
+  </form>
+</body>
+</html>
+
+{% endblock %}
