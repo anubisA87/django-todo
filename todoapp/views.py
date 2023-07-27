@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from .models import Project, Task
-from .forms import CreateTask, CreateProject, UpdateProject
+from .forms import CreateTask, CreateProject, UpdateProject, CreateUser
+from django.contrib.auth import login, authenticate, logout
 
 
 # Create your views here.
@@ -10,7 +11,6 @@ def home(request):
 
 
 def projects(request):
-    # projects = list(Project.objects.values())
     projects = Project.objects.all()
     return render(request, "projects.html", {"projects": projects})
 
@@ -95,7 +95,12 @@ def completed(request, id):
 
 
 def sign_up(request):
-    if request.method == "GET":
-        return render(request, "sign_up.html")
+    if request.method == "POST":
+        form = CreateUser(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("projects")
     else:
-        form = RegisterForm(request.POST)
+        form = CreateUser()
+    return render(request, "registration/sign_up.html", {"form": form})

@@ -86,3 +86,7 @@ form {
 html {
   background-color: lightgrey;
 }
+
+ul {
+  line-height: 1.5;
+}

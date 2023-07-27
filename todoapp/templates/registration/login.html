@@ -9,15 +9,19 @@
   <title>Login</title>
 </head>
 <body>
-  <h1 style="font-weight: bold; color: black;">Login</h1>
-  <form method="POST" style="margin: 22; margin-top: 35;">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <div style="margin-top: 30;">
-      <button class="btn btn-success" type="submit">Login</button>
-      <a href="/sign-up" style="margin: 30;">Create account</a>
-    </div>
-  </form>
+  {% if user.is_authenticated %}
+  <h3>Already logged in as: <a style="font-weight: bold;">{{ user.username }}</a></h3>
+  {% else %}
+    <h1 style="font-weight: bold; color: black;">Login</h1>
+    <form method="POST" style="margin: 22; margin-top: 35;">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div style="margin-top: 30;">
+        <button class="btn btn-success" type="submit">Login</button>
+        <a href="/sign-up" style="margin: 30;">Create account</a>
+      </div>
+    </form>
+  {% endif %}
 </body>
 </html>
 
