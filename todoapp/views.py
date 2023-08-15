@@ -84,39 +84,56 @@ def create_project(request):
 
 @login_required(login_url="login")
 def delete_project(request, id):
-  project = Project.objects.get(id=id)
-  if project.user_id != request.user.id:
+  try:
+    project = Project.objects.get(id=id)
+    if project.user_id != request.user.id:
+      raise Http404
+    else:
+      project.delete()
+      return redirect("projects")
+  except ObjectDoesNotExist:
     raise Http404
-  else:
-    project.delete()
-    return redirect("projects")
 
 
 @login_required(login_url="login")
 def update_project(request, id):
-  if request.method == "GET":
+  try: 
     project = Project.objects.get(id=id)
-    return render(
-      request,
-      "update_project.html",
-      {
-        "form": UpdateProject(),
-        "project": project,
-      },
-    )
-  else:
-    project = Project.objects.filter(id=id)
-    project.update(name=request.POST["name"])
-    return redirect("projects")
+    if project.user.id != request.user.id:
+      raise Http404
+    else: 
+      if request.method == "GET":
+        project = Project.objects.get(id=id)
+        return render(
+          request,
+          "update_project.html",
+          {
+            "form": UpdateProject(),
+            "project": project,
+          },
+        )
+      else:
+        project = Project.objects.filter(id=id)
+        project.update(name=request.POST["name"])
+        return redirect("projects")
+  except ObjectDoesNotExist:
+    raise Http404
 
 
 @login_required(login_url="login")
 def completed(request, id):
-  task = Task.objects.filter(id=id)
-  task.update(completed=True)
-  task_object = Task.objects.get(id=id)
-  fk = task_object.project
-  return redirect("/tasks/" + str(fk.id))
+  try:
+    task = Task.objects.get(id=id)
+    if task.user.id != request.user.id:
+      raise Http404
+    else:
+      task = Task.objects.filter(id=id)
+      task.update(completed=True)
+      task_object = Task.objects.get(id=id)
+      fk = task_object.project
+      return redirect("/tasks/" + str(fk.id))
+  except ObjectDoesNotExist:
+    raise Http404
 
 
 def sign_up(request):
