@@ -25,9 +25,9 @@ SECRET_KEY = "django-insecure-d&(&nop997831b+96np#)as0!bjh1pbrg7a3kf%0*50p9_9+g-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-todo--anubisa87.repl.co', '10.20.1.45', '10.20.0.22']
+ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://django-todo--anubisa87.repl.co', 'https://10.20.1.45']
+CSRF_TRUSTED_ORIGINS = ["https://django-todo--anubisa87.repl.co", "https://10.20.1.45"]
 
 
 # Application definition
