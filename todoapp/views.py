@@ -95,6 +95,20 @@ def delete_project(request, id):
 
 
 @login_required(login_url="login")
+def delete_task(request, id):
+    try:
+        task = Task.objects.get(id=id)
+        project_id = task.project_id
+        if request.user.id != task.user.id:
+            raise Http404
+        else:
+            task.delete()
+            return redirect("/tasks/" + str(project_id))
+    except ObjectDoesNotExist:
+        raise Http404
+
+
+@login_required(login_url="login")
 def update_project(request, id):
     try:
         project = Project.objects.get(id=id)

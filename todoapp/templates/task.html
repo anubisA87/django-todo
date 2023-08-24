@@ -20,6 +20,7 @@
       {% else %}
         <input class="checkbox-t" type="checkbox" checked disabled>
       {% endif %}
+        <button><a href="/delete_task/{{ task.id }}">Delete</a></button>
     </div>
   </div>
   <button class="back"><a href="/tasks/{{ task.project_id }}">↩ Back</a></button>
