@@ -1,1 +1,5 @@
 .vscode/
+.idea/
+./todoproject/__pycache__/
+./todoapp/__pycache__/
+./todoapp/migrations/__pycache__/
