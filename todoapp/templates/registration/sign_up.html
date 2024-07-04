@@ -9,7 +9,7 @@
   <title>Sign Up</title>
 </head>
 <body>
-  <h1 style="font-weight: bold; color: black;">Sign Up</h1>
+  <h1 style="font-weight: bold; color: black; margin-left: 20; margin-top: 10;">Sign Up</h1>
   <form method="POST" style="margin: 22; margin-top: 35;">
     {% csrf_token %}
     {{ form|crispy }}

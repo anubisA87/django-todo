@@ -23,12 +23,16 @@ def tasks(request, project_id):
     tasks = Task.objects.filter(user_id=request.user.id)
     project_tasks = tasks.filter(project_id=project_id)
     projects = Project.objects.filter(user_id=request.user.id)
+    if not project_tasks:
+        empty_project = True
+    else:
+        empty_project = False
     try:
         project = projects.get(id=project_id)
     except ObjectDoesNotExist:
         raise Http404
     return render(
-        request, "tasks.html", {"project_tasks": project_tasks, "project": project}
+        request, "tasks.html", {"project_tasks": project_tasks, "project": project, "empty_project": empty_project}
     )
 
 

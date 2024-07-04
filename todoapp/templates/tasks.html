@@ -12,6 +12,9 @@
   <h1>Tasks</h1>
   <h3><a href="/projects">Project: {{ project.name }}</a></h3>
   <ul class="task_list">
+    {% if empty_project == True %}
+      <p style="font-weight: bold">No tasks</p>
+    {% endif %}
     {% for task in project_tasks %}
         <li>
           <a href="/task/{{task.id}}">{{ task.title }}</a>

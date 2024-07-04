@@ -12,7 +12,7 @@
   {% if user.is_authenticated %}
   <h3>Already logged in as: <a style="font-weight: bold;">{{ user.username }}</a></h3>
   {% else %}
-    <h1 style="font-weight: bold; color: black;">Login</h1>
+    <h1 style="font-weight: bold; color: black; margin-left: 20; margin-top: 10;">Login</h1>
     <form method="POST" style="margin: 22; margin-top: 35;">
       {% csrf_token %}
       {{ form|crispy }}
