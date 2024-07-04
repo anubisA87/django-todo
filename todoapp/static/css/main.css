@@ -90,3 +90,10 @@ html {
 ul {
   line-height: 1.5;
 }
+
+#id_description {
+  max-width: 100%;
+  max-height: 200px;
+  min-width: 360px;
+  min-height: 100px;
+}
